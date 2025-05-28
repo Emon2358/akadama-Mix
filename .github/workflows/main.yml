@@ -1,0 +1,30 @@
+name: Download and Commit MP3
+
+on:
+  push:
+    branches:
+      - main       # main ブランチにプッシュがあるたびに実行
+  workflow_dispatch: {}  # 手動トリガーも可能
+
+jobs:
+  download-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # git push に必要なトークンを引き継ぐ
+          fetch-depth: 0
+
+      - name: Download sbm001.mp3
+        run: |
+          curl -L "http://www.amenbreak.net/mix/sbm001.mp3" -o sbm001.mp3
+
+      - name: Commit and push sbm001.mp3
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: github-actions[bot]
+          author_email: github-actions[bot]@users.noreply.github.com
+          message: "Add sbm001.mp3"
+          add: "sbm001.mp3"

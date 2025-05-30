@@ -19,7 +19,7 @@ jobs:
 
       - name: Download sbm001.mp3
         run: |
-          curl -L "http://www.amenbreak.net/mix/sbm001.mp3" -o sbm001.mp3
+          curl -L "https://web.archive.org/web/20041120013346/http://www.ismusic.ne.jp/sabacan/taurign_WORLD_FREE(Guchon_Remix).mp3" -o taurign_WORLD_FREE(Guchon_Remix).mp3
 
       - name: Commit and push sbm001.mp3
         uses: EndBug/add-and-commit@v9
